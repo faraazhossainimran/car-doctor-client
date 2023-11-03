@@ -13,7 +13,7 @@ const ServiceCard = ({ service }) => {
         <div className="card-body ">
           <h2 className="card-title">{title}</h2>
           <div className="card-actions">
-            <h3 className="text-xl font-semibold text-[#FF3811]">Price: {price}</h3>
+            <h3 className="text-xl font-semibold text-[#FF3811]">Price: ${price}</h3>
             <p className="text-xl font-semibold text-[#FF3811]">buy</p>
           </div>
         </div>

@@ -1,12 +1,30 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.svg'
+import { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
+import Swal from 'sweetalert2';
 const NavBar = () => {
+  const {user, logOut} = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut()
+    .then(()=>{
+      Swal.fire(
+        'Logged out successfully!',
+        'Please login next time!',
+        'success'
+      )
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
   const navItems = <>
   <li><Link to={'/'} className='text-xl'>Home</Link></li>
   <li><Link to={'/about'} className='text-xl'>About</Link></li>
   <li><Link to={'/service'} className='text-xl'>Service</Link></li>
   <li><Link to={'/blog'} className='text-xl'>Blog</Link></li>
   <li><Link to={'/contact'} className='text-xl'>Contact</Link></li>
+  {user?.email ? <li><button onClick={handleLogOut} className='text-xl'>Signout</button></li> : <li><Link to={'/login'} className='text-xl'>login</Link></li>}
   </>
   return (
     <div className="container mx-auto">
