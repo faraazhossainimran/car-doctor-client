@@ -1,29 +1,17 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const BookingsDetail = ({ bookingsDetail }) => {
+const BookingsDetail = ({ bookingsDetail, handleDelete }) => {
   const { _id, customerName, email, img, date, service, price } = bookingsDetail;
-  const handleDelete = (id) => {
-    Swal.fire({
-        title: 'Do you want to save the changes?',
-        showDenyButton: true,
-        showCancelButton: true,
-        confirmButtonText: 'Save',
-        denyButtonText: `Don't save`,
-      }).then((result) => {
-        /* Read more about isConfirmed, isDenied below */
-        if (result.isConfirmed) {
-          Swal.fire('Saved!', '', 'success')
-        } else if (result.isDenied) {
-          Swal.fire('Changes are not saved', '', 'info')
-        }
-      })
-  }
+
   return (
     <>
       <tr>
         <th>
-          <button onClick={()=> handleDelete(_id)} className="btn btn-circle btn-error">
+          <button
+            onClick={() => handleDelete(_id)}
+            className="btn btn-circle btn-error"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
