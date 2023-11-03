@@ -10,7 +10,7 @@ const About = () => {
             <img src={parts} className="absolute top-1/2 right-5 w-1/2 rounded-lg shadow-2xl border-8 border-white" />
           </div>
           <div className="lg:w-1/2">
-            <h3 className="text-3xl font-bold text-[#FF3811] mb-6">About Us</h3>
+            <h3 className="text-xl font-bold text-[#FF3811] mb-6">About Us</h3>
             <h1 className="text-5xl font-bold">We are qualified & of experience in this field</h1>
             <p className="py-8">
             There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. 

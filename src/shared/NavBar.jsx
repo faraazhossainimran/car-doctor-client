@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.svg'
 const NavBar = () => {
   const navItems = <>
-  <li><Link to={'/'}>Home</Link></li>
-  <li><Link to={'/about'}>About</Link></li>
-  <li><Link to={'/service'}>Service</Link></li>
-  <li><Link to={'/blog'}>Blog</Link></li>
-  <li><Link to={'/contact'}>Contact</Link></li>
+  <li><Link to={'/'} className='text-xl'>Home</Link></li>
+  <li><Link to={'/about'} className='text-xl'>About</Link></li>
+  <li><Link to={'/service'} className='text-xl'>Service</Link></li>
+  <li><Link to={'/blog'} className='text-xl'>Blog</Link></li>
+  <li><Link to={'/contact'} className='text-xl'>Contact</Link></li>
   </>
   return (
     <div className="container mx-auto">
