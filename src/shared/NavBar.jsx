@@ -1,31 +1,72 @@
-import { Link } from 'react-router-dom';
-import logo from '../assets/logo.svg'
-import { useContext } from 'react';
-import { AuthContext } from '../providers/AuthProvider';
-import Swal from 'sweetalert2';
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.svg";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
+import { Navigate } from "react-router-dom";
 const NavBar = () => {
-  const {user, logOut} = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
-    .then(()=>{
-      Swal.fire(
-        'Logged out successfully!',
-        'Please login next time!',
-        'success'
-      )
-    })
-    .catch(error => {
-      console.log(error);
-    })
-  }
-  const navItems = <>
-  <li><Link to={'/'} className='text-xl'>Home</Link></li>
-  <li><Link to={'/about'} className='text-xl'>About</Link></li>
-  <li><Link to={'/service'} className='text-xl'>Service</Link></li>
-  <li><Link to={'/blog'} className='text-xl'>Blog</Link></li>
-  <li><Link to={'/contact'} className='text-xl'>Contact</Link></li>
-  {user?.email ? <li><button onClick={handleLogOut} className='text-xl'>Signout</button></li> : <li><Link to={'/login'} className='text-xl'>login</Link></li>}
-  </>
+      .then(() => {
+        Swal.fire(
+          "Logged out successfully!",
+          "Please login next time!",
+          "success"
+        );
+        <Navigate to="/" />
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const navItems = (
+    <>
+      <li>
+        <Link to={"/"} className="text-xl">
+          Home
+        </Link>
+      </li>
+      <li>
+        <Link to={"/about"} className="text-xl">
+          About
+        </Link>
+      </li>
+      <li>
+        <Link to={"/service"} className="text-xl">
+          Service
+        </Link>
+      </li>
+      <li>
+        <Link to={"/blog"} className="text-xl">
+          Blog
+        </Link>
+      </li>
+      <li>
+        <Link to={"/contact"} className="text-xl">
+          Contact
+        </Link>
+      </li>
+      {user?.email ? (
+        <>
+          <li>
+            <Link to={"bookings-details"} className="text-xl">My Bookings</Link>
+          </li>
+          <li>
+            <button onClick={handleLogOut} className="text-xl">
+              Signout
+            </button>
+          </li>
+        </>
+      ) : (
+        <li>
+          <Link to={"/login"} className="text-xl">
+            login
+          </Link>
+        </li>
+      )}
+    </>
+  );
   return (
     <div className="container mx-auto">
       <div className="navbar bg-base-100 h-28">
@@ -51,17 +92,15 @@ const NavBar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                {navItems}
-              </li>
+              <li>{navItems}</li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl"><img className='w-[80px]' src={logo}/></a>
+          <a className="btn btn-ghost normal-case text-xl">
+            <img className="w-[80px]" src={logo} />
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-              {navItems}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end">
           <a className="btn btn-outline btn-warning">Appointment</a>

@@ -4,9 +4,10 @@ import ServiceCard from "./ServiceCard";
 const Services = () => {
   const [services, setServices] = useState([]);
   useEffect(() => {
-    fetch("services.json")
+    fetch("http://localhost:5000/services/")
       .then((res) => res.json())
       .then((data) => setServices(data));
+      console.log(services);
   }, []);
   return (
     <div className="container mx-auto">

@@ -5,7 +5,8 @@ import Swal from "sweetalert2";
 
 const Bookings = () => {
   const service = useLoaderData();
-  const { title, price, _id, img } = service;
+  const { title, price, _id, img, name, date } = service;
+  console.log(service);
   const {user} = useContext(AuthContext)
   const handleBookService = e => {
     e.preventDefault()
@@ -19,6 +20,7 @@ const Bookings = () => {
         email, 
         img,
         date, 
+        due,
         service: title,
         service_id: _id,
         price: price
@@ -64,7 +66,7 @@ const Bookings = () => {
           <input
             type="date"
             name="date"
-            placeholder="Date"
+            defaultValue={date}
             className="input input-bordered w-full"
           />
         </div>
@@ -86,7 +88,7 @@ const Bookings = () => {
           <input
             type="text"
             name="due"
-            defaultValue={`$ ${price}`}
+            defaultValue={price}
             className="input input-bordered w-full"
           />
         </div>

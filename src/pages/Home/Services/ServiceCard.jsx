@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 const ServiceCard = ({ service }) => {
-    const {title, img, price} = service
+  // console.log(service);
+    const {_id, title, img, price} = service
   return (
     <div>
       <div className="card bg-base-100 shadow-xl">
@@ -14,7 +17,7 @@ const ServiceCard = ({ service }) => {
           <h2 className="card-title">{title}</h2>
           <div className="card-actions">
             <h3 className="text-xl font-semibold text-[#FF3811]">Price: ${price}</h3>
-            <p className="text-xl font-semibold text-[#FF3811]">buy</p>
+            <p className="text-xl font-semibold text-[#FF3811]"><Link to={`http://localhost:5173/bookings/${_id}`}>| Buy</Link></p>
           </div>
         </div>
       </div>
