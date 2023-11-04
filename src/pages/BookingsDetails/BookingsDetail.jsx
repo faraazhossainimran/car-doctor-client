@@ -1,9 +1,9 @@
 import React from "react";
 import Swal from "sweetalert2";
 
-const BookingsDetail = ({ bookingsDetail, handleDelete }) => {
-  const { _id, customerName, email, img, date, service, price } = bookingsDetail;
-
+const BookingsDetail = ({ bookingsDetail, handleDelete, handleConfirm }) => {
+  const { _id, customerName, email, img, date, service, price, status } = bookingsDetail;
+console.log(bookingsDetail);
   return (
     <>
       <tr>
@@ -51,7 +51,9 @@ const BookingsDetail = ({ bookingsDetail, handleDelete }) => {
           <p className="text-lg text-orange-600 font-semibold">${price}</p>
         </td>
         <th>
-          <button className="btn btn-ghost btn-xs">details</button>
+         {
+          status === 'confirm' ? <span className="font-bold text-primary">Confirmed</span> :  <button onClick={()=> handleConfirm(_id)} className="btn btn-ghost btn-xs">Please Confirm</button>
+         }
         </th>
       </tr>
     </>
